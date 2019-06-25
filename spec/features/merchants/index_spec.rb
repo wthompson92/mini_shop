@@ -10,9 +10,9 @@ RSpec.describe "Merchant Index" do
       visit "/merchants"
 
 
-    expect(page).to have_content(merchant_1.title)
-    expect(page).to have_content(merchant_2.title)
-    expect(page).to have_content(merchant_3.title)
+    expect(page).to have_content(merchant_1.name)
+    expect(page).to have_content(merchant_2.name)
+    expect(page).to have_content(merchant_3.name)
       end
     end
   end
