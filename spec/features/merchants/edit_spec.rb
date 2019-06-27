@@ -7,7 +7,7 @@ RSpec.describe 'Edit Merchant' do
         merchant = Merchant.create!(name: "Mcguckins", address: "321 Canyon", city: "Boulder", state: "CO", zip: 80501)
 
         visit "/merchants/#{merchant.id}"
-        click_link 'Edit Merchant'
+        click_button 'Edit'
         expect(current_path).to eq("/merchants/#{merchant.id}/edit")
 
         fill_in 'Name', with: 'Blackbelly'
