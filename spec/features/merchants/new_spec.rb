@@ -4,7 +4,7 @@ RSpec.describe 'New Merchant' do
   describe 'As a visitor' do
     describe 'When I visit the new merchant form' do
       it 'I can create a new merchant' do
-        visit '/artists'
+        visit '/merchants'
         click_link 'New Merchant'
         expect(current_path).to eq('/merchants/new')
         fill_in 'Name', with: 'McGuckins'
