@@ -7,5 +7,11 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
   end
-
-end
+  #
+  #
+  # def create
+  #   @merchant = Merchant.new(article_params)
+  #   @article.save
+  #   flash.notice = "Merchant #{@me.title} Created!"
+  #   redirect_to article_path(@article)
+  end
