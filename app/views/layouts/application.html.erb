@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <header>
+      <%= button_to "Mercahnts", '/merchants', method: :get %>
+      <%= button_to "Items", '/items', method: :get %>
+    </header>
     <%= yield %>
   </body>
 </html>

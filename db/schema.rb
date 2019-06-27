@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20190627202800) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.string "price"
+    t.integer "inventory"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "merchant_id"
-    t.string "integer"
+    t.integer "merchant_id"
   end
 
   create_table "merchants", force: :cascade do |t|
