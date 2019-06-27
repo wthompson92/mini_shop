@@ -3,9 +3,13 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
   end
+  #
+  # def merchant_item_index
+  #
+  # end
 
   def show
-  @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -14,32 +18,30 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.artist_id = params[:merchant_id]
+    item.merchant_id = params[:merchant_id]
     item.save!
     redirect_to "/items/#{item.id}"
+  end
+
+  def edit
+  @item = Item.find(params[:id])
 end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    @item.save
+    redirect_to "/items/#{@item.id}"
+  end
+
+ def destroy
+   Item.destroy(params[:id])
+   redirect_to "/items"
+ end
+
+  private
+
+  def item_params
+    params.permit(:name, :description, :price, :inventory)
+  end
 end
-#   def edit
-#     def edit
-#       @merchant = Merchant.find(params[:id])
-#     end
-#   end
-#
-#   def update
-#     # @merchant = Merchant.find(params[:id])
-#     @merchant.update(merchant_params)
-#       # description: params[:task][:description]
-# @merchant.save
-# redirect_to "/merchants/#{@merchant.id}"
-# end
-#
-# def destroy
-#   Merchant.destroy(params[:id])
-# redirect_to "/merchants"
-# end
-#
-#   private
-# def merchant_params
-#   params.permit(:name)
-# end
-# end
