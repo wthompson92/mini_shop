@@ -13,12 +13,9 @@ RSpec.describe 'Edit Merchant' do
         fill_in 'Name', with: 'Blackbelly'
 
     click_on "Update Merchant"
-    # expect(current_path).to eq("/merchants/#{merchant.id}")
-
-
+    
     expect(page).to have_content("Blackbelly")
-
+      end
+    end
   end
-end
-end
 end
