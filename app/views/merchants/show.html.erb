@@ -1,8 +1,8 @@
-<a href='/merchants/:id'> Merchant Show </a>
-
 <h1><%= @merchant.name %></h1>
-<p><%= @merchant.name %></p>
 <p><%= @merchant.address %></p>
 <p><%= @merchant.city %></p>
 <p><%= @merchant.state %></p>
 <p><%= @merchant.zip %></p>
+
+<%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get%>
+<%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
