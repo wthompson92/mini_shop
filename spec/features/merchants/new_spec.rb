@@ -8,6 +8,8 @@ RSpec.describe 'New Merchant' do
         click_link 'New Merchant'
         expect(current_path).to eq('/merchants/new')
         fill_in 'Name', with: 'McGuckins'
+        fill_in 'Address', with: '123 Main'
+        fill_in 'City', with: 'Boulder'
                click_on 'Create Merchant'
                expect(current_path).to eq("/merchants")
        expect(page).to have_content('McGuckins')

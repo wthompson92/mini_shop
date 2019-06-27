@@ -1,8 +1,9 @@
 <a href='/merchants/:id'> Merchant Show </a>
 
 <h1><%= @merchant.name %></h1>
-<p><%= @merchant.name %></p>
 <p><%= @merchant.address %></p>
 <p><%= @merchant.city %></p>
 <p><%= @merchant.state %></p>
 <p><%= @merchant.zip %></p>
+
+<a href="/merchants/<%=@merchant.id%>/edit">Edit Merchant</a>
