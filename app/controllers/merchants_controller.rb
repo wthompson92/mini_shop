@@ -30,7 +30,7 @@ end
 
 def destroy
   Merchant.destroy(params[:id])
-redirect_to "/merchants"
+redirect_to merchants_path, success: 'Merchant has been deleted'
 end
 
   private
