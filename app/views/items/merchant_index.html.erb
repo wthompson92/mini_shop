@@ -1,0 +1,8 @@
+<%@mechants.each do |merchant|%>
+<h1><%= merchant.name %></h1>
+<p><%= merchant.items.name%></p>
+<p><%= merchant.items.description%></p>
+<p><%= merchant.items.price%></p>
+<p><%= merchant.items.inventory %></p>
+<%= button_to "Add Item To Merchant", "/merchants/#{merchant.id}/items/new", methood: :get %>
+<%end%>

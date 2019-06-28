@@ -4,9 +4,12 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
   #
-  # def merchant_item_index
-  #
-  # end
+  def merchant_item_index
+    merchant_items = Item.all
+    merchant_items.find_all do |item|
+       item.merchant_id == @merchant.id
+    end
+  end
 
   def show
     @item = Item.find(params[:id])
