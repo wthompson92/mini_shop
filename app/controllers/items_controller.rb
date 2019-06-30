@@ -1,15 +1,12 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
-  end
-  #
-  def merchant_item_index
-    merchant_items = Item.all
-    merchant_items.find_all do |item|
-       item.merchant_id == @merchant.id
+      if params[:merchant_id]
+          @items = Merchant.find(params[:merchant_id]).items
+        else
+          @items = Item.all
+      end
     end
-  end
 
   def show
     @item = Item.find(params[:id])
@@ -23,7 +20,7 @@ class ItemsController < ApplicationController
     item = Item.new(item_params)
     item.merchant_id = params[:merchant_id]
     item.save!
-    redirect_to "/items/#{item.id}"
+    redirect_to items_path
   end
 
   def edit
@@ -34,12 +31,12 @@ end
     @item = Item.find(params[:id])
     @item.update(item_params)
     @item.save
-    redirect_to "/items/#{@item.id}"
+    redirect_to items_path
   end
 
  def destroy
    Item.destroy(params[:id])
-   redirect_to "/items"
+   redirect_to items_path
  end
 
   private

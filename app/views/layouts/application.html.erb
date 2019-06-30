@@ -11,16 +11,19 @@
 
   <body>
     <header>
-      <ul >
+      <nav >
+        <ul>
         <li>
       <%= link_to "Mercahnts", '/merchants', method: :get %>
       </li>
       <li>
       <%= link_to "Items", '/items', method: :get %>
       </li>
-    </ul>
+      </ul>
+    </nav>
     <br>
   </header>
+  <title> Mini Shop</title>
     <%= yield %>
   </body>
 </html>

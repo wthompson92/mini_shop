@@ -1,8 +1,9 @@
 <h1>Merchants</h1>
-<ul>
+
 <% @merchants.each do |merchant| %>
+<dl>
 <li><%=link_to merchant.name, merchant_path(merchant.id)%> </li>
-<br>
-</ul>
+</dl>
+
 <% end %>
 <%= button_to 'New Merchant', new_merchant_path, method: :get %>
