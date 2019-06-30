@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   def index
       if params[:merchant_id]
-          @items = Merchant.find(params[:merchant_id]).items
+          @items = Merchant.find(params[:merchant_id])
         else
           @items = Item.all
       end

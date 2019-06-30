@@ -6,7 +6,9 @@
 <p><%= @merchant.zip %></p>
 <div class="button button-primary">
 
+<%= button_to 'View Merchant Items', merchant_items_path(@merchant.id), method: :get%>
 <%= button_to 'Edit', edit_merchant_path(@merchant), method: :get%>
 <%= button_to 'Delete', merchant_path(@merchant), method: :delete %>
+
 
 </div>

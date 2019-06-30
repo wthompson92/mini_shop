@@ -1,7 +1,0 @@
-<%@items.each do |item|%>
-<a><%= item.name %></a>
-<a><%= item.description%></a>
-<a><%= item.price%></a>
-<a><%= item.inventory %></a>
-<%= button_to "Add Item To Merchant", "/items/#{item.merchant_id}/items/new", method: :get %>
-<%end%>
