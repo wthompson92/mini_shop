@@ -6,9 +6,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="/css/master.css">
   </head>
 
   <body>
+    <header>
+      <nav >
+        <ul>
+        <li>
+      <%= link_to "Mercahnts", '/merchants', method: :get %>
+      </li>
+      <li>
+      <%= link_to "Items", '/items', method: :get %>
+      </li>
+      </ul>
+    </nav>
+    <br>
+  </header>
+  <title> Mini Shop</title>
     <%= yield %>
   </body>
 </html>

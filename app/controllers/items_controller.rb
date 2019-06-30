@@ -1,43 +1,47 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+      if params[:merchant_id]
+          @items = Merchant.find(params[:merchant_id])
+        else
+          @items = Item.all
+      end
+    end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
-   def show
-   @item = Item.find(params[:id])
+  def new
+    @merchant_id = params[:merchant_id]
   end
+
+  def create
+    item = Item.new(item_params)
+    item.merchant_id = params[:merchant_id]
+    item.save!
+    redirect_to items_path
+  end
+
+  def edit
+  @item = Item.find(params[:id])
 end
 
-#   def new
-#   end
-#
-#   def create
-#   Merchant.create(merchant_params)
-#     redirect_to '/merchants'
-#   end
-#
-#   def edit
-#     def edit
-#       @merchant = Merchant.find(params[:id])
-#     end
-#   end
-#
-#   def update
-#     # @merchant = Merchant.find(params[:id])
-#     @merchant.update(merchant_params)
-#       # description: params[:task][:description]
-# @merchant.save
-# redirect_to "/merchants/#{@merchant.id}"
-# end
-#
-# def destroy
-#   Merchant.destroy(params[:id])
-# redirect_to "/merchants"
-# end
-#
-#   private
-# def merchant_params
-#   params.permit(:name)
-# end
-# end
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    @item.save
+    redirect_to items_path
+  end
+
+ def destroy
+   Item.destroy(params[:id])
+   redirect_to items_path
+ end
+
+  private
+
+  def item_params
+    params.permit(:name, :description, :price, :inventory)
+  end
+end

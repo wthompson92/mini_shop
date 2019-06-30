@@ -1,5 +1,9 @@
-<%= link_to 'New Merchant', '/merchants/new' %>
 <h1>Merchants</h1>
+
 <% @merchants.each do |merchant| %>
-<h2><%= link_to merchant.name, "/merchants/#{merchant.id}" %></h2>
+<dl>
+<li><%=link_to merchant.name, merchant_path(merchant.id)%> </li>
+</dl>
+
 <% end %>
+<%= button_to 'New Merchant', new_merchant_path, method: :get %>
