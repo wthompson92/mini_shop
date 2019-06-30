@@ -1,5 +1,6 @@
 <h1>Items</h1>
+<ul>
 <% @items.each do |item| %>
-<%= item.name %>
-
+<li><%= link_to item.name, item_path(item.id) %></li>
+</ul>
 <%end%>
