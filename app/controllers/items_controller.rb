@@ -11,18 +11,20 @@ end
 
 def show
   @item = Item.find(params[:id])
+  @merchant = Merchant.find(@item.merchant_id)
 end
 
 def new
   @merchant = Merchant.find(params[:merchant_id])
+  @item = Item.new
 end
 
 def create
   @item = Item.create(item_params)
-  redirect_to items_path
+  redirect_to "/merchants/#{@item.merchant_id}/items"
 end
 
-  def edit
+def edit
   @item = Item.find(params[:id])
 end
 

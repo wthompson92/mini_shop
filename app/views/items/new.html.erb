@@ -1,16 +1,16 @@
 <%= form_tag("/merchants/#{@merchant.id}/items") do %>
 
 <%= label_tag :name %>
-<%= text_field_tag "item[name]" %>
+<%= text_field_tag :name %>
 
 <%= label_tag :description %>
-<%= text_field_tag "item[description]" %>
+<%= text_field_tag :description %>
 
 <%= label_tag :price %>
-<%= text_field_tag "item[price]" %>
+<%= text_field_tag :price%>
 
 <%= label_tag :inventory %>
-<%= number_field_tag "item[inventory]" %>
+<%= number_field_tag :inventory %>
 
 <%= submit_tag "Create Item"%>
 

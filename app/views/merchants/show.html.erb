@@ -1,14 +1,14 @@
 <h1>Merchant Page</h1>
 <h2><%= @merchant.name %></h2>
-<p><%= @merchant.address %></p>
-<p><%= @merchant.city %></p>
-<p><%= @merchant.state %></p>
-<p><%= @merchant.zip %></p>
-<div class="button button-primary">
+<ul>
+<li><%="Address: #{@merchant.address}"%></li>
+<li><%="City: #{@merchant.city}"%></li>
+<li><%="State: #{@merchant.state}"%></li>
+<li><%="Address: #{@merchant.zip}"%></li>
+</ul>
 
-<%= button_to 'View Merchant Items', merchant_items_path(@merchant.id), method: :get%>
+
+<%= button_to "View #{@merchant.name}'s Items", merchant_items_path(@merchant.id), method: :get%>
 <%= button_to 'Edit', edit_merchant_path(@merchant), method: :get%>
+<%= button_to 'Back', merchants_path, method: :get %>
 <%= button_to 'Delete', merchant_path(@merchant), method: :delete %>
-
-
-</div>
