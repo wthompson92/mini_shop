@@ -13,8 +13,7 @@ class MerchantsController < ApplicationController
   end
 
   def create
-  @merchant = Merchant.create(merchant_params)
-  flash.notice = "Merchant #{@merchant.name} Created!"
+  @mercahnt = Merchant.create(merchant_params)
     redirect_to merchants_path(@merchant)
   end
 
@@ -32,7 +31,6 @@ class MerchantsController < ApplicationController
 
   def destroy
     @merchant.destroy
-     flash.notice = "Article #{@article.title} Deleted!"
     redirect_to merchants_path
   end
 

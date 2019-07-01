@@ -19,5 +19,5 @@
     <li><%= item.inventory %></li>
   </ul>
   <% end %>
-  <p><%= link_to 'New Item', "/merchants/#{@merchant.id}/items/new" %></p>
+  <p><%= button_to "New Item for #{@merchant.name}", "/merchants/#{@merchant.id}/items/new", method: :get %></p>
 <% end %>
