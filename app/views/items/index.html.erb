@@ -1,17 +1,16 @@
 <% if @merchant.nil?  %>
   <h1>All Items</h1>
   <% @items.each do |item| %>
-    <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
+    <h3><%= link_to item.name, item_path(item.id) %></h3>
     <ul>
     <li><%= "Description: #{item.description}" %></li>
     <li><%= "Price: #{item.price}" %></li>
     <li><%= "Inventory: #{item.inventory}" %></li>
     </ul>
-
     <p><%= button_to "Seller: #{Merchant.find(item.merchant_id).name}", "/merchants/#{item.merchant_id}", method: :get %></p>
   <% end %>
 <% else  %>
-  <h1>Items for <%= link_to @merchant.name, "/merchants/#{@merchant.id}" %></h1>
+  <h1>Items for <%= link_to @merchant.name, merchant_items_path %></h1>
   <% @items.each do |item| %>
     <h2><%= link_to item.name, "/items/#{item.id}" %></h2>
     <p><%= item.price %></p>

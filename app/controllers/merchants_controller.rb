@@ -1,5 +1,5 @@
 class MerchantsController < ApplicationController
-  before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :set_merchant, only: [:show, :edit, :update, :destroy]
 
   def index
     @merchants = Merchant.all
@@ -9,25 +9,30 @@ class MerchantsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
   @merchant = Merchant.create(merchant_params)
-    redirect_to merchants_path
+  flash.notice = "Merchant #{@merchant.name} Created!"
+    redirect_to merchants_path(@merchant)
   end
 
     def edit
+      @merchant
     end
 
 
   def update
       @merchant.update(merchant_params)
       @merchant.save
-      redirect_to merchant_path
+      "Merchant #{@merchant.name} Updated!"
+      redirect_to merchant_path(@merchant)
   end
 
   def destroy
     @merchant.destroy
+     flash.notice = "Article #{@article.title} Deleted!"
     redirect_to merchants_path
   end
 
@@ -36,7 +41,7 @@ private
     params.permit(:name, :address, :city, :state, :zip)
   end
 
-  def find_params
+  def set_merchant
     @merchant = Merchant.find(params[:id])
   end
 end
