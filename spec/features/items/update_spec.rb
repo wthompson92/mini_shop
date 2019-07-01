@@ -3,28 +3,23 @@ describe 'Item Update' do
     describe 'When I visit a Item show page' do
       it 'I can update the item' do
 
-        merchant = Merchant.create!(name: "Dry Pockets", address: "1008 Royal St George", city: "Naperville", state: "IL", zip: "60654")
-        item = Item.create!(name: "Phone Baggie",
-                            description: "Store phone when hiking",
-                            price: 9.99,
-                            image: "pic of baggie",
-                            status: "active",
-                            inventory: 30,
-                            merchant_id: merchant.id)
+        merchant_1 = Merchant.create!(name: 'Home Depot')
+        hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
 
-        visit "/items/#{item.id}"
+        merchant_2 = Merchant.create!(name: 'REI')
+        cam = merchant_2.items.create!(name: 'Cam', description: 'This is a cam', price: "10", inventory: 50 )
+
+        visit item_path(hammer.id)
 
         click_link 'Edit'
 
-        expect(current_path).to eq("/items/#{item.id}/edit")
+        expect(current_path).to eq("/items/#{hammer.id}/edit")
 
-        fill_in 'Name', with: "Phone Sleeve"
-        fill_in 'Description', with: "Keep phone dry during hikes"
+        fill_in 'Name', with: "Hammer_1"
         click_on 'Update Item'
 
-        expect(current_path).to eq("/items/#{item.id}")
-        expect(page).to have_content('Phone Sleeve')
-        expect(page).to have_content('Keep phone dry during hikes')
+        expect(current_path).to eq("/items/#{hammer.id}")
+        expect(page).to have_content('Hammer_1')
       end
     end
   end

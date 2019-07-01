@@ -11,6 +11,7 @@
     <li><%= "Inventory: #{item.inventory}" %></li>
     <li><%= "Status: #{item.status}" %></li>
     <li><%= image_tag (item.image) %></li>
+
   </ul>
     </ul>
     <p><%= button_to "Seller: #{Merchant.find(item.merchant_id).name}", "/merchants/#{item.merchant_id}", method: :get %></p>
@@ -26,7 +27,7 @@
     <li><%= "Price: #{item.price}" %></li>
     <li><%= "Inventory: #{item.inventory}" %></li>
     <li><%= "Status: #{item.status}" %></li>
-    <li> <img src=<%=item.image%>> </li>
+    <li><%= image_tag (item.image) %></li>
   </ul>
   <% end %>
   <p><%= button_to "New Item for #{@merchant.name}", "/merchants/#{@merchant.id}/items/new", method: :get %></p>

@@ -13,7 +13,7 @@ class MerchantsController < ApplicationController
   end
 
   def create
-  @mercahnt = Merchant.create(merchant_params)
+  @merchant = Merchant.create(merchant_params)
     redirect_to merchants_path(@merchant)
   end
 

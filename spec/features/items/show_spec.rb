@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
-  describe 'I visit an item show page' do
-    it "then I see only that items's name, description, price, inventory" do
-      merchant_1 = Merchant.create!(name: 'Home Depot')
-      hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
+  describe "When I visit '/merchants/:merchant_id/items'" do
+    it "Then I see each Item that belongs to the Merchant with that merchant_id including the Item's: name, price, image, active/inactive status, inventory" do
 
-      merchant_2 = Merchant.create!(name: 'REI')
-      cam = merchant_2.items.create!(name: 'cam', description: 'This is a cam', price: "10", inventory: 50 )
+      merchant_1 = Merchant.create!(name: 'Home Depot', address: '123 canyon st', city: 'Boulder', state: 'CO', zip: 80302)
 
+      hammer = merchant_1.items.create(name: "Hammer", description: "This is a Hammer", price: '25', status: 'active', inventory: 100)
+      visit "/items/#{merchant_1.id}"
 
-      visit "/items/#{hammer.id}"
-
+      expect(current_path).to eq("/items/#{hammer.id}")
       expect(page).to have_content(hammer.name)
-      expect(page).to have_content("By: #{merchant_1.name}")
-      expect(page).to_not have_content(merchant_2.name)
+      expect(page).to have_content(hammer.description)
+      expect(page).to have_content(hammer.price)
+      expect(page).to have_content(hammer.status)
+      expect(page).to have_content(hammer.inventory)
     end
   end
 end
