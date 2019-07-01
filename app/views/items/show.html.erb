@@ -1,9 +1,12 @@
 <h1><%= @item.name %></h1>
-<p><%= @item.description %></p>
-<p><%= @item.price %></p>
-<p><%= @item.inventory %></p>
+<ul>
+<li><%= "Description: #{@item.description}" %></li>
+<li><%= "Price: #{@item.price}" %></li>
+<li><%= "Inventory: #{@item.inventory}" %></li>
+</ul>
 
- <%= button_to 'View Seller', merchant_items_path(@items.merchant_id), method: :get %> %>
+
+<%= button_to "Seller: #{@merchant.name}", "/merchants/#{@item.merchant_id}", method: :get %>
 <%= button_to 'Edit', "/items/#{@item.id}/edit", method: :get%>
 
 <%= button_to 'Delete', "/items/#{@item.id}", method: :delete%>

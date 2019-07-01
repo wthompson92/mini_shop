@@ -1,40 +1,47 @@
 class MerchantsController < ApplicationController
+  before_action :set_merchant, only: [:show, :edit, :update, :destroy]
 
   def index
     @merchants = Merchant.all
   end
 
   def show
-    @merchant = Merchant.find(params[:id])
   end
 
   def new
+
   end
 
   def create
-  Merchant.create(merchant_params)
-    redirect_to '/merchants'
+  @merchant = Merchant.create(merchant_params)
+  flash.notice = "Merchant #{@merchant.name} Created!"
+    redirect_to merchants_path(@merchant)
   end
 
     def edit
-      @merchant = Merchant.find(params[:id])
+      @merchant
     end
 
 
   def update
-     @merchant = Merchant.find(params[:id])
-    @merchant.update(merchant_params)
-    @merchant.save
-redirect_to "/merchants/#{@merchant.id}"
-end
+      @merchant.update(merchant_params)
+      @merchant.save
+      "Merchant #{@merchant.name} Updated!"
+      redirect_to merchant_path(@merchant)
+  end
 
-def destroy
-  Merchant.destroy(params[:id])
-redirect_to merchants_path, success: 'Merchant has been deleted'
-end
+  def destroy
+    @merchant.destroy
+     flash.notice = "Article #{@article.title} Deleted!"
+    redirect_to merchants_path
+  end
 
-  private
-def merchant_params
-  params.permit(:name, :address, :city, :state, :zip)
-end
+private
+  def merchant_params
+    params.permit(:name, :address, :city, :state, :zip)
+  end
+
+  def set_merchant
+    @merchant = Merchant.find(params[:id])
+  end
 end

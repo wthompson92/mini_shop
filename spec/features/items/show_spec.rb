@@ -5,7 +5,7 @@ RSpec.describe 'As a visitor' do
     it "then I see only that items's name, description, price,  inventory" do
       merchant_1 = Merchant.create!(name: 'Home Depot')
 
-      hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
+    hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
 
       merchant_2 = Merchant.create!(name: 'REI')
 
