@@ -2,13 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
   describe 'I visit an item show page' do
-    it "then I see only that items's name, description, price,  inventory" do
+    it "then I see only that items's name, description, price, inventory" do
       merchant_1 = Merchant.create!(name: 'Home Depot')
-
-    hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
+      hammer = merchant_1.items.create!(name: 'Hammer', description: 'This is a hammer', price: "75", inventory: 10)
 
       merchant_2 = Merchant.create!(name: 'REI')
-
       cam = merchant_2.items.create!(name: 'cam', description: 'This is a cam', price: "10", inventory: 50 )
 
 
