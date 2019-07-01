@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
-    redirect_to items_path
+    redirect_to merchant_items_path(@item.merchant_id)
   end
 
   def edit
@@ -43,8 +43,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.permit(:name, :description, :price, :inventory)
-    # output.merge(merchant_id: @merchant.id)
+    params.permit(:name, :description, :price, :inventory, :image, :status, :merchant_id)
   end
 
 end
